@@ -20,6 +20,8 @@ To start the joystick and steer the motors:
 >> rosrun joy joy_node dev:=/dev/input/js0 
 // Your user account needs access. You may have to sudo chmod js0
 >> rosparam load joystick_param.yaml 
+
 // Don't forget there's a deadman switch! If you aren't holding that, you won't go anywhere
+
 >> rosrun joy_teleop joy_teleop.py
 >> python commander.py
