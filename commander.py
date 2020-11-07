@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import rospy
 from geometry_msgs.msg import Twist
-from adafruit_servokit import ServoKit
+from adafruit_servokit import ServoKit #Requires Python3
 
 def callback(data, kit):
    print("hi")
