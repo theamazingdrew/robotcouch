@@ -1,8 +1,8 @@
 # robotcouch
-ROS-based remote-controlled robot utilizing a PCA9685 motor driver interfaced with (in this case) a Jetson Nano. Early derivatives of this code also worked on a Raspberry Pi
+ROS-based remote-controlled robot utilizing a PCA9685 motor driver interfaced with (in this case) a Jetson Nano. Using ROS Melodic on Ubuntu 18.04. Early derivatives of this code also worked on a Raspberry Pi
 
 
-This is currently super alpha code, but it does work (although there are plenty of bugs and almost no error checking). The following are some relevant notes for running.
+This is currently alpha code, but it does work (although there are plenty of bugs and almost no error checking). The following are some relevant notes for running.
 
 To test the adafruit controls when plugging in the PCA9685:
 1. Open Python3
