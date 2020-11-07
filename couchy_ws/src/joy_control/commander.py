@@ -6,6 +6,7 @@ from adafruit_servokit import ServoKit #Requires Python3
 def callback(data, kit):
    print("hi")
    #THE CALCULATIONS AREN'T RIGHT FOR THE TWO MOTORS YET
+   #SHOULD YOU JUST USE SKID STEER STEERING WITH TWO STICKS?
    rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.linear.x)
    # This is where you put the motor calls and do the math to include angular z
    left = data.linear.x
@@ -18,6 +19,8 @@ def callback(data, kit):
    print(right)
    #kit.continuous_servo[1].throttle = round(data.linear.x, 2) 
    #kit.continuous_servo[0].throttle = round(data.linear.x, 2)
+   #IF THE THROTTLE IS GREATER THAN 1 OR LESS THAN -1, IT NEEDS TO CATCH 
+   # THE ERROR AND CORRECT. PUT ERROR CATCHING IN HERE BELOW
    kit.continuous_servo[1].throttle = round(left, 2) 
    kit.continuous_servo[0].throttle = round(right, 2)
    # round data.linear.x and angular.z to the nearest tenth?
