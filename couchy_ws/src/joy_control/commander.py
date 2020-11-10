@@ -3,7 +3,7 @@ import rospy
 from geometry_msgs.msg import Twist
 from adafruit_servokit import ServoKit #Requires Python3
 
-#A test
+#A tester
 def callback(data, kit):
    print("hi")
    #THE CALCULATIONS AREN'T RIGHT FOR THE TWO MOTORS YET
