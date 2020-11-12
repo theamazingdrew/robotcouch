@@ -19,6 +19,10 @@ teleop:
         target: linear.y
         scale: 1
  
+        axis: 3
+        target: linear.z  #Going to try using this as the reverse button for now
+        scale: 1
+
   hello:
     type: topic
     message_type: std_msgs/String
