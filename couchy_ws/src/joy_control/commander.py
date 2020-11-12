@@ -32,16 +32,13 @@ def callback(data, kit):
 
 def move():
     # Initiate the motor controllers
-    print("1")
     kit = ServoKit(channels=16) 
     kit.continuous_servo[1].throttle = 0 # safety initiate 
-    kit.continuous_servo[0].throttle = 0 # safety initiate 
-    print("2")
+    kit.continuous_servo[0].throttle = 0 # safety initiate
     rospy.init_node('commander', anonymous=True)
-    print("3")
     # Starts a new node
     velocity_subscriber = rospy.Subscriber('/r2/cmd_vel', Twist, callback, (kit), queue_size=1)
-    print("4")
+    print("Up")
     rospy.spin()
 
 if __name__ == '__main__':

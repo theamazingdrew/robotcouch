@@ -20,7 +20,7 @@ Good references for joystick control:
 http://wiki.ros.org/joy/Tutorials/ConfiguringALinuxJoystick
 http://ros-developer.com/2017/07/28/control-your-robot-with-a-joystick-in-ros/
 
-To start the joystick and steer the motors:
+To start the joystick and steer the motors on your laptop:
 >> rosrun joy joy_node dev:=/dev/input/js0 
 
 Your user account needs access. You may have to sudo chmod js0
@@ -28,6 +28,10 @@ Your user account needs access. You may have to sudo chmod js0
 >> rosparam load joystick_param.yaml 
 
 Don't forget there's a deadman switch! If you aren't holding that, you won't go anywhere
+Then fire up the joystick connected to your laptop. On your laptop run...
 
 >> rosrun joy_teleop joy_teleop.py
->> python commander.py
+
+Then commander.py is run on the robot itself. Also, you'll need to pip install the Adafruit library for a PCA9685. The adafruit library requires python3
+
+>> python3 commander.py
