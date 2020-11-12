@@ -7,11 +7,14 @@ from adafruit_servokit import ServoKit #Requires Python3
 def callback(data, kit):
    print("hi")
    #THE CALCULATIONS AREN'T RIGHT FOR THE TWO MOTORS YET
-   #SHOULD YOU JUST USE SKID STEER STEERING WITH TWO STICKS?
+   # TRY USING LINEAR.Z AS THE REVERSE BUTTON. wHEN IT'S -1, GO INTO REVERSE.
    rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.linear.x)
    # This is where you put the motor calls and do the math to include angular z
    left = data.linear.x
    right = data.linear.x
+   # NEED TO CHECK IF IT'S IN REVERSE. AND FIX THE CALCULATION. if IT'S IN REVERSE, ONLY HAVE NEGATIVE LINEAR.X. OTHERWISE IT HAS TO BE POSITIVE.
+   # AND IF HAS TO BE BETWEEN 1 AND 0. ADD ERROR CATCHING FOR THAT.
+   # SOMEWHERE IN HERE YOU NEED TO TEAR DOWN THE ADAFRUIT_SERVOKIT AT CLOSE ALSO.
    if data.linear.z < 0:
       left = data.linear.x - data.angular.z
    else:
