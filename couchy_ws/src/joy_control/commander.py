@@ -15,11 +15,11 @@ def callback(data, kit):
    # SOMEWHERE IN HERE YOU NEED TO TEAR DOWN THE ADAFRUIT_SERVOKIT AT CLOSE
    #######
    if data.angular.x < 0:
-      left = max(data.linear.x + data.angular.x, 0)
-      right = data.linear.x
-   else:
-      right = min(data.linear.x - data.angular.x, 1)
+      right = max(data.linear.x + data.angular.x, 0)
       left = data.linear.x
+   else:
+      left = max(data.linear.x - data.angular.x, 0)
+      right = data.linear.x
    print(left)
    print(right)
    #######
