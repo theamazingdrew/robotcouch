@@ -24,7 +24,7 @@ teleop:
         scale: 1
       -
         axis: 5
-        target: linear.z  #Going to try using this as the reverse button for now
+        target: linear.z  
         scale: 1
       -
         axis: 2

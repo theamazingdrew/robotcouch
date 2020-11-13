@@ -10,12 +10,8 @@ def callback(data, kit):
    # This is where you put the motor calls and do the math to include angular z
    left = data.linear.x
    right = data.linear.x
-   reverse = data.linear.z
-   # NEED TO CHECK IF IT'S IN REVERSE. AND FIX THE CALCULATION. if IT'S IN REVERSE, ONLY HAVE NEGATIVE LINEAR.X. OTHERWISE IT HAS TO BE POSITIVE.
-   # AND IF HAS TO BE BETWEEN 1 AND 0. ADD ERROR CATCHING FOR THAT.
    # SOMEWHERE IN HERE YOU NEED TO TEAR DOWN THE ADAFRUIT_SERVOKIT AT CLOSE
-   #######
-   if data.linear.z == -1
+   if data.linear.z == -1:
       if data.angular.z == -1:
          if data.angular.x > 0:
             left = min(data.linear.x + data.angular.x, 0)
@@ -35,18 +31,10 @@ def callback(data, kit):
       right = 0
    print(left)
    print(right)
-   #######
-   #kit.continuous_servo[1].throttle = round(data.linear.x, 2) 
-   #kit.continuous_servo[0].throttle = round(data.linear.y, 2)
    #IF THE THROTTLE IS GREATER THAN 1 OR LESS THAN -1, IT NEEDS TO CATCH 
    # THE ERROR AND CORRECT. PUT ERROR CATCHING IN HERE BELOW
    kit.continuous_servo[1].throttle = left 
    kit.continuous_servo[0].throttle = right
-   # round data.linear.x and angular.z to the nearest tenth?
-   # then calculate the impact of data.angular.z
-   # Then update the motor speed
-   # kit.continuous_servo[1].throttle = xxx 
-   # kit.continuous_servo[0].throttle = xxx 
 
 def move():
     # Initiate the motor controllers
