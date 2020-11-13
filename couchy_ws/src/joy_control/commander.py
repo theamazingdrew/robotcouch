@@ -9,24 +9,24 @@ def callback(data, kit):
    rospy.loginfo(rospy.get_caller_id() + " I heard %s", data)
    # This is where you put the motor calls and do the math to include angular z
    left = data.linear.x
-   right = data.linear.y
+   right = data.linear.x
    # NEED TO CHECK IF IT'S IN REVERSE. AND FIX THE CALCULATION. if IT'S IN REVERSE, ONLY HAVE NEGATIVE LINEAR.X. OTHERWISE IT HAS TO BE POSITIVE.
    # AND IF HAS TO BE BETWEEN 1 AND 0. ADD ERROR CATCHING FOR THAT.
    # SOMEWHERE IN HERE YOU NEED TO TEAR DOWN THE ADAFRUIT_SERVOKIT AT CLOSE
    #######
-   #if data.linear.z < 0:
-   #   left = data.linear.x - data.angular.z
-   #else:
-   #   right = data.linear.x + data.angular.z
-   #print(left)
-   #print(right)
+   if data.angular.x < 0:
+      left = max(data.linear.x + data.angular.x, 0)
+   else:
+      right = min(data.linear.x - data.angular.x, 1)
+   print(left)
+   print(right)
    #######
-   kit.continuous_servo[1].throttle = round(data.linear.x, 2) 
-   kit.continuous_servo[0].throttle = round(data.linear.y, 2)
+   #kit.continuous_servo[1].throttle = round(data.linear.x, 2) 
+   #kit.continuous_servo[0].throttle = round(data.linear.y, 2)
    #IF THE THROTTLE IS GREATER THAN 1 OR LESS THAN -1, IT NEEDS TO CATCH 
    # THE ERROR AND CORRECT. PUT ERROR CATCHING IN HERE BELOW
-   ####kit.continuous_servo[1].throttle = round(left, 2) 
-   ####kit.continuous_servo[0].throttle = round(right, 2)
+   kit.continuous_servo[1].throttle = left 
+   kit.continuous_servo[0].throttle = right
    # round data.linear.x and angular.z to the nearest tenth?
    # then calculate the impact of data.angular.z
    # Then update the motor speed
