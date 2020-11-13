@@ -7,7 +7,7 @@ from adafruit_servokit import ServoKit #Requires Python3
 def callback(data, kit):
    # TRY USING LINEAR.Z AS THE REVERSE BUTTON. wHEN IT'S -1, GO INTO REVERSE.
    rospy.loginfo(rospy.get_caller_id() + " I heard %s", data.linear.x)
-   rospy.loginfo(rospy.get_caller_id() + " I heard %s", data.linear.y)
+   rospy.loginfo(rospy.get_caller_id() + " I heards %s", data)
    # This is where you put the motor calls and do the math to include angular z
    left = data.linear.x
    print(left)
