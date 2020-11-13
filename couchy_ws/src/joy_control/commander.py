@@ -17,15 +17,14 @@ def callback(data, kit):
    #######
    if data.linear.z == -1:
       if data.angular.x > 0:
-         right = min(data.linear.x + data.angular.x, 0)
-         left = min(data.linear.x, 0)
-      else:
-         left = min(data.linear.x - data.angular.x, 0)
+         left = min(data.linear.x + data.angular.x, 0)
          right = min(data.linear.x, 0)
+      else:
+         right = min(data.linear.x - data.angular.x, 0)
+         left = min(data.linear.x, 0)
    else:
       if data.angular.x < 0:
          right = max(data.linear.x + data.angular.x, 0)
-
          left = max(data.linear.x, 0)
       else:
          left = max(data.linear.x - data.angular.x, 0)
