@@ -3,7 +3,7 @@ teleop:
     type: topic
     message_type: geometry_msgs/Twist
     topic_name: r2/cmd_vel
-    deadman_buttons: [5]
+    deadman_buttons: [0]
     axis_mappings:
       -
         axis: 1
@@ -20,8 +20,13 @@ teleop:
         scale: 1
       -
         axis: 0
-        target: angular.x  #Going to try using this as the reverse button for now
+        target: angular.x
         scale: 1
+      -
+        axis: 5
+        target: linear.z  #Going to try using this as the reverse button for now
+        scale: 1
+
 
   hello:
     type: topic

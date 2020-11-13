@@ -10,16 +10,17 @@ def callback(data, kit):
    # This is where you put the motor calls and do the math to include angular z
    left = data.linear.x
    right = data.linear.x
+   reverse = data.linear.z
    # NEED TO CHECK IF IT'S IN REVERSE. AND FIX THE CALCULATION. if IT'S IN REVERSE, ONLY HAVE NEGATIVE LINEAR.X. OTHERWISE IT HAS TO BE POSITIVE.
    # AND IF HAS TO BE BETWEEN 1 AND 0. ADD ERROR CATCHING FOR THAT.
    # SOMEWHERE IN HERE YOU NEED TO TEAR DOWN THE ADAFRUIT_SERVOKIT AT CLOSE
    #######
    if data.angular.x < 0:
       right = max(data.linear.x + data.angular.x, 0)
-      left = data.linear.x
+      left = max(data.linear.x, 0)
    else:
       left = max(data.linear.x - data.angular.x, 0)
-      right = data.linear.x
+      right = max(data.linear.x, 0)
    print(left)
    print(right)
    #######
