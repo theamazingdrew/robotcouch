@@ -16,8 +16,10 @@ def callback(data, kit):
    #######
    if data.angular.x < 0:
       left = max(data.linear.x + data.angular.x, 0)
+      right = data.linear.x
    else:
       right = min(data.linear.x - data.angular.x, 1)
+      left = data.linear.x
    print(left)
    print(right)
    #######
