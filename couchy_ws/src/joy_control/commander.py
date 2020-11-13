@@ -15,20 +15,24 @@ def callback(data, kit):
    # AND IF HAS TO BE BETWEEN 1 AND 0. ADD ERROR CATCHING FOR THAT.
    # SOMEWHERE IN HERE YOU NEED TO TEAR DOWN THE ADAFRUIT_SERVOKIT AT CLOSE
    #######
-   if data.linear.z == -1:
-      if data.angular.x > 0:
-         left = min(data.linear.x + data.angular.x, 0)
-         right = min(data.linear.x, 0)
+   if data.linear.z == -1
+      if data.angular.z == -1:
+         if data.angular.x > 0:
+            left = min(data.linear.x + data.angular.x, 0)
+            right = min(data.linear.x, 0)
+         else:
+            right = min(data.linear.x - data.angular.x, 0)
+            left = min(data.linear.x, 0)
       else:
-         right = min(data.linear.x - data.angular.x, 0)
-         left = min(data.linear.x, 0)
+         if data.angular.x < 0:
+            right = max(data.linear.x + data.angular.x, 0)
+            left = max(data.linear.x, 0)
+         else:
+            left = max(data.linear.x - data.angular.x, 0)
+            right = max(data.linear.x, 0)
    else:
-      if data.angular.x < 0:
-         right = max(data.linear.x + data.angular.x, 0)
-         left = max(data.linear.x, 0)
-      else:
-         left = max(data.linear.x - data.angular.x, 0)
-         right = max(data.linear.x, 0)
+      left = 0
+      right = 0
    print(left)
    print(right)
    #######
